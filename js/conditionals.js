@@ -143,6 +143,26 @@ var userColor = prompt("Pick a color any color!...from the following selection: 
  * return value.
  */
 
+(function calculateTotal(luckyNumber, cost) {
+    if(luckyNumber === 5) {
+        console.log("Winner winner chicken dinner, you got the lucky number 5 so your total comes out to be $0!");
+    } else if (luckyNumber === 4) {
+        var total = cost - (cost * 50 / 100);
+        console.log("You got the lucky number 4, so you get half off your purchase! Your total comes out to " + total + ".");
+    } else if(luckyNumber === 3) {
+        var total = cost - (cost * 35 / 100);
+        console.log("You got the lucky number 3, so you get 35% off your purchase! Your total comes out to " + total + ".");
+    } else if(luckyNumber === 2) {
+        var total = cost - (cost * 25 / 100);
+        console.log("You got the slightly lucky number 2, so you get 25% off your purchase! Your purchase comes out to " + total + ".");
+    } else if(luckyNumber === 1) {
+        var total = cost - (cost * 10 / 100);
+        console.log("You didn't get a very lucky number but you still get a 10% off your purchase! Your purchase comes out to be " + total + ".");  
+    } else {
+        console.log("Oh so sorry you got the one unlucky number 0, you get no discount. Your total is " + cost  + ".");
+    }
+})(1, 100);
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -152,7 +172,28 @@ var userColor = prompt("Pick a color any color!...from the following selection: 
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+let cost = prompt("What is you bills total?");
+
+(function calculateTotal(luckyNumber, cost) {
+    if(luckyNumber === 5) {
+        alert("Winner winner chicken dinner, you got the lucky number 5!! Your original cost was $" + cost + " but now your total comes out to be $0!");
+    } else if (luckyNumber === 4) {
+        var total = cost - (cost * 50 / 100);
+        alert("You got the lucky number 4, so you get half off your purchase! Your original cost was $" + cost + " but now your total comes out to $" + total + ".");
+    } else if(luckyNumber === 3) {
+        var total = cost - (cost * 35 / 100);
+        alert("You got the lucky number 3, so you get 35% off your purchase! Your original cost was $" + cost + " but now your total comes out to $" + total + ".");
+    } else if(luckyNumber === 2) {
+        var total = cost - (cost * 25 / 100);
+        alert("You got the slightly lucky number 2, so you get 25% off your purchase! Your original cost was $" + cost + " but now your purchase comes out to $" + total + ".");
+    } else if(luckyNumber === 1) {
+        var total = cost - (cost * 10 / 100);
+        alert("You didn't get a very lucky number (1) but you still get 10% off your purchase! Your original cost was $" + cost + " but now your purchase comes out to be $" + total + ".");  
+    } else {
+        alert("Oh, so sorry, you got the one unlucky number 0, you get no discount. Your total is $" + cost  + ".");
+    }
+})(luckyNumber, cost);
 
 /**
  * TODO:
@@ -172,3 +213,28 @@ var userColor = prompt("Pick a color any color!...from the following selection: 
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+let confirmation = confirm("Would you like to enter a number?");
+
+if(confirmation) {
+    let promptNum = parseInt(prompt("Please type in a number.")); //prompt for whatever reason brings back the input as a string so i had to use parseInt
+    console.log(isNaN(NaN));//not too sure why this runs when promptNum == NaN
+    if(isNaN(promptNum) != true) { //
+        let plusHundred = promptNum + 100;
+        if(promptNum % 2 === 0 && promptNum < 0) {
+            alert("The number you typed is even and negative and if you added 100 to it the new number would be " + plusHundred + ".");
+        } else if(promptNum % 2 !== 0 && promptNum < 0) {
+            alert("The number you typed is odd and is also negative and if you added 100 to it the new number would be " + plusHundred + ".");
+        } else if(promptNum % 2 === 0 && promptNum > 0) {
+            alert("The number you typed is even and also positive. If you added 100 to it the new number would be " + plusHundred + ".");
+        } else {
+            alert("The number you typed is even and also negative. If you added 100 to it the new number would be " + plusHundred + ".");
+        }
+    } else {
+        alert("Whatever you just typed was not a number, please re-evaluate your life and try again later.")
+    };
+};
+
+
+
+
