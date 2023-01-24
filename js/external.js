@@ -28,6 +28,6 @@ var enrollment = (fullClass < numberOfStudentsEnrolled + 1) && (classTime != alr
 var premMember; //true or false
 var numberOfItemsBought; //number
 var OfferStillValid; //is the special offer still available
-var applyOffer = (premMember || numberOfItemsBought < 2) && OfferStillValid; //the offer is applied if the person is a premium member or bought more than 2 items AND the offer is still valid
+var applyOffer = (premMember || numberOfItemsBought > 2) && OfferStillValid; //the offer is applied if the person is a premium member or bought more than 2 items AND the offer is still valid
 
 

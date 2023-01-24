@@ -217,8 +217,8 @@ let cost = prompt("What is you bills total?");
 let confirmation = confirm("Would you like to enter a number?");
 
 if(confirmation) {
-    let promptNum = parseInt(prompt("Please type in a number.")); //prompt for whatever reason brings back the input as a string so i had to use parseInt
-    console.log(isNaN(NaN));//not too sure why this runs when promptNum == NaN
+    let promptNum = parseInt(prompt("Please type in a number."));
+    console.log(isNaN(NaN));
     if(isNaN(promptNum) != true) { //
         let plusHundred = promptNum + 100;
         if(promptNum % 2 === 0 && promptNum < 0) {

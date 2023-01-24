@@ -14,7 +14,7 @@ var output = "howdy doo " + yourName;
     return output;
 }
 
-sayHello()
+console.log(sayHello("David"));
 
 /**
  * TODO:
@@ -55,7 +55,7 @@ var random = Math.floor((Math.random() * 3) + 1);
  * Call the function 'isTwo' passing the variable 'random' as a argument.
  *
  * console.log *outside of the function* to check your work (you should see a
- * different result everytime you refresh the page if you are using the random
+ * different result every time you refresh the page if you are using the random
  * number)
  */
 
@@ -88,12 +88,12 @@ console.log(calculateTip(0.25, 25.50));
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
-//--------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------
 // var randomV2 = Math.floor((Math.random() * 70) + 1)
 // var tipPercent = prompt("Your total was " + randomV2 + ", what percent would you like to tip?");
 // var tipAmount = calculateTip(tipPercent, randomV2);
 // alert("Your tip amount is $" + tipAmount / 100);
-//--------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -114,15 +114,13 @@ console.log(calculateTip(0.25, 25.50));
 //     return price - discountAmount;
 // }
 
-// console.log(applyDiscount(45.99, 0.12));
-
 var price = 12;
 var discount = .2;
 //the above variables don't effect the below function even though they are global variables. because it's 'self contained'.
 (function applyDiscount(price, discount) {
     var discountAmount = price * discount;
     console.log(price - discountAmount);
-})(45.99, 0.12);
+})(45.99, 0.2);
 //printing the functions returned value 
 console.log((function applyDiscount(price, discount) {
     var discountAmount = price * discount;
@@ -134,6 +132,3 @@ var x = (function applyDiscount(price, discount) {
     return price - discountAmount;
 })(45.99, 0.12);
 console.log(x);
-
-
-
