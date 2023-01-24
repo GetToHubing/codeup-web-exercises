@@ -89,10 +89,10 @@ console.log(calculateTip(0.25, 25.50));
  * then display the dollar amount they should tip
  */
 //------------------------------------------------------------------------------------------------------------------------------------------------
-// var randomV2 = Math.floor((Math.random() * 70) + 1)
-// var tipPercent = prompt("Your total was " + randomV2 + ", what percent would you like to tip?");
-// var tipAmount = calculateTip(tipPercent, randomV2);
-// alert("Your tip amount is $" + tipAmount / 100);
+var randomV2 = Math.floor((Math.random() * 70) + 1)
+var tipPercent = prompt("Your total was " + randomV2 + ", what percent would you like to tip?");
+var tipAmount = calculateTip(tipPercent, randomV2);
+alert("Your tip amount is $" + tipAmount / 100);
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 /**
  * TODO:
