@@ -33,7 +33,7 @@
     person.sayHello = function () {
             console.log("Hello from " + this.firstName + " " + this.lastName);
         }
-    console.log(person.sayHello());
+    console.log(person.sayHello()); //QUESTION - why am i getting a undefined even though the log works as intended, when opened in web console it shows it's this line messing up
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -156,36 +156,67 @@
      * - Create a function named `createBook` that accepts a title and author
      *   name and returns a book object with the properties described
      *   previously. ---Refactor your code that creates the books array to instead
-     *   use your function.---                   
+     *   use your function.---                                                      does this want me to recreate the books array?? 
      * - Create a function named `showBookInfo` that accepts a book object and
      *   outputs the information described above. Refactor your loop to use your
-     *   `showBookInfo` function.
+     *   `showBookInfo` function.                                                   does this want me to redo the forEach but with my new array? maybe without the forEach?
      */
 
 
-
-    function createBookV2(title, author) {
-        let nameArray = author.split(" ");
+    //function that accepts title and author and returns an object that looks similar to books array
+    //the function constructor if you may...heh
+    function createBook(title, author) {
+        let nameArray = author.split(" "); //didn't expect this to work 
         this.title = title;
         this.author = {
-            firstName: nameArray[0],
+            firstName: nameArray[0],//or this hhahahaha lucky
             lastName: nameArray[1]
         }
     } 
-    let s = new createBookV2("1984", "George Orwell");
-    console.log(s.author.firstName);
+    // let s = new createBookV2("1984", "George Orwell"); // this line and the one below it was me trying to recreate the books array
+    // console.log(s.author.firstName);
+    // Remembered that i needed to create instances...heh
+    function newBook(title, author) {
+        let b = new createBook(title, author);
+        booksV2.push(b)
+    }
+
+    let booksV2 = [];
+
+    newBook("1984", "George Orwell");
+    newBook("The Art of War", "Sun Tsu");
+    newBook("The Salmon of Doubt", "Douglas Adams");
+    newBook("Thus Spoke Zarathustra", "Friedrich Nietzsche");
+    newBook("Animal Farm", "George Orwell");
+
+    console.log(booksV2); // logs the array of objects in the terminal
 
     
-    
-    function createBook(title, firstName, lastName) {
+    // the below code was my first attempt, learned how to nest objects so that was a definite win...now to just remember it
+    function createBookV2(title, firstName, lastName) {
         this.title = title;
         this.author = { // NOTE TO SELF - this is how you nest an object in an object when using a constructor
             firstName: firstName,
             lastName: lastName
         };
     } 
-    let a = new createBook("asdf", "lkjh", 'qwer');
-    console.log(a.author.firstName);
+    // let a = new createBookV2("asdf", "lkjh", 'qwer');
+    // console.log(a.author.firstName);
+
+    console.log("-------------------------------------"); //just to make it easier to know where i am in the console
+
+
+    //probably use a for loop...or not
+    function showBookInfo(x) {
+        x.forEach(function (y, index) {
+            index += 1;
+            console.log("Book #" + index);
+            console.log(y.title);
+            console.log(y.author.firstName + " " + y.author.lastName);
+            console.log("---")
+        })
+    }
+    showBookInfo(booksV2);
 
 
     
