@@ -23,11 +23,11 @@
 })();
 
 // #4
+//got this one to work with some help
 (function pyramid() {
     for(let i = 1; i < 10; i++) {
         let empty = "";
         for(let j = 0; j < i; j++) {
-            //console.log(i); //QUESTION--------------------cannot for the life of me to get the outputs to print on the same line when they should 
             empty += i;
         }
         console.log(empty);
@@ -45,7 +45,6 @@
 (function subtractFive() {
     for(let i = 100; i >= 0; i -= 5) {
         console.log(i);
-        
     }
 })()
 
