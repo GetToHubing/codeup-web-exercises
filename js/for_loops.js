@@ -1,10 +1,10 @@
 "use strict";
 
 //#2
-(function showMultiplicationTable(x) {
+(function showMultiplicationTable() {
     let i = 1;
     while(i < 11) {
-        console.log(x * i);
+        console.log('7 x ' + i + ' = ' + (7 * i) );
         i++
     }
 })();
