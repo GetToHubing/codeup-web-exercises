@@ -8,3 +8,17 @@ comment
     color: purple; /* single line comment */
     text-decoration: underline;
 }
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+body {
+    background-image: url("/img/website_background.jpg");
+    background-size: cover;
+}
