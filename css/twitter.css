@@ -54,29 +54,29 @@ a {
 }
 .profile-form {
     line-height: 80px;
+    float: right;
 }
 .profile-image {
     position: absolute;
-    top: 250px;
+    top: 15em;
 }
 .profile-details {
     float: left;
-    width: calc(22% - .5em); /* can't seem to get this to work with the 25% that is asked for */
-    margin-left: .5em;
-    margin-right: .5em;
+    width: calc(25% - 1em); /* can't seem to get this to work with the 25% that is asked for */
+    margin: auto .5em;
 }
 .timeline {
     float: left;
-    width: calc(50% - .5em);
-    margin-left: .5em;
-    margin-right: .5em;
+    width: calc(50% - 1em);
+    margin: auto .5em;
+
     
 }
 .who-to-follow {
     float: left;
-    width: calc(25% - .5em);
-    margin-left: .5em;
-    margin-right: .5em;
+    width: calc(25% - 1em);
+    margin: auto .5em;
+
 }
 .container {
     margin-top: 2em;
@@ -121,7 +121,7 @@ a {
     float: left;
 }
 .profile-items {
-    padding: 0;
+    padding: 0px;
     list-style: none;
 }
 .profile-entry {
