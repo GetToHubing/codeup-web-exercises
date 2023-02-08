@@ -7,10 +7,25 @@
 </head>
 
 <body>
+    <h1>Favorite Quotes</h1>
+    <p>Below is a small list of quotes that I have found over the years that I found interesting in one way or another</p>
+    <div>
+        <ul>
+            <li><q>Battle not with monsters, lest ye become a monster, and if you gaze into the abyss, the abyss gazes also into you.</q> - Friedrich Nietzsche</li>
+            <li><q>The best time to plant a tree was 20 years ago. The second best time is now.</q> - chinese proverb</li>
+            <li ><q>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</q> - Aristotle</li>
+            <li><q>If opportunity doesn’t knock, build a door.</q> - Kurt Cobain</li>
+            <li><q>Work hard in silence, let your success be the noise.</q> - Frank Ocean</li>
+        </ul>
+    </div>
+    <p>There are so many different quotes from so many different people, you might just find one that really speaks to you.</p>
     <script>
-        $(function () {
-            alert('The DOM has finished loading!');
+        var content = $('h1').html();
+        $(function() {
+            alert(content);
         });
+        $('li').css('font-size', '20px')
+        $('li, p, h1').css('background-color', 'yellow')
     </script>
 </body>
 
