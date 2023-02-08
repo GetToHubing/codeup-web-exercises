@@ -20,12 +20,24 @@
     </div>
     <p>There are so many different quotes from so many different people, you might just find one that really speaks to you.</p>
     <script>
-        var content = $('h1').html();
-        $(function() {
-            alert(content);
-        });
-        $('li').css('font-size', '20px')
-        $('li, p, h1').css('background-color', 'yellow')
+        $('h1').click(
+            function() {
+                $(this).css('background-color', 'lightblue');
+            }
+        );
+        $('p').dblclick(
+            function() {
+                $(this).css('font-size', '18px');
+            }
+        );
+        $('li').hover(
+            function() {
+                $(this).css('color', 'red');
+            },
+            function() {
+                $(this).css('color', 'black');
+            }
+        );
     </script>
 </body>
 
