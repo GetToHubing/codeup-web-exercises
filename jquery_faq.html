@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>National Park Faqs</title>
+</head>
+
+<body>
+    <p>Here are 10 facts about national parks that I hope you like!</p>
+    <dl>
+        <dt>Yellowstone National Park</dt>
+        <dd class="invisible">Is the oldest U.S. national park, founded in 1872.</dd>
+
+        <dt>Yosemite National Park</dt>
+        <dd class="invisible">Out the ten highest waterfalls in the world Yosemite national park is home to 3 out of the
+            ten waterfalls.</dd>
+
+        <dt>Sequoia National Park</dt>
+        <dd class="invisible">Is home to the largest living single-stem tree in the world.</dd>
+
+        <dt>Wrangell-St. Elias National Park</dt>
+        <dd class="invisible">Is the Largest national park covering 13,000 square miles or 13.2 million acres.</dd>
+
+        <dt>Mammoth Cave National Park</dt>
+        <dd class="invisible">Has the longest cave system in the world with more than 3,454 mapped miles.</dd>
+
+        <dt>Carlsbad Caverns National Park</dt>
+        <dd class="invisible">Has the nations deepest cave which is 1,593ft deep.</dd>
+
+        <dt>Dry Tortugas National Park</dt>
+        <dd class="invisible">Is a collection of seven tiny islands that can only be reached by boat or plane.</dd>
+
+        <dt>Hawaii Volcanoes National Park</dt>
+        <dd class="invisible">Is home to the worlds biggest volcano.</dd>
+
+        <dt>Crater Lake National Park</dt>
+        <dd class="invisible">Has the deepest lake at 1,932 feet deep.</dd>
+
+        <dt>Olympic National Park</dt>
+        <dd class="invisible">Has had one human death by animal and it wasn't by aa bear but by a goat.</dd>
+    </dl>
+    <script src="js/jquery-3.6.3.js"></script>
+    <script>
+        $('.invisible').css('visibility', 'hidden');
+
+        $('dt').click(function () {
+            $('dd').toggleClass('invisible');
+
+        });
+
+    </script>
+</body>
+
+</html>
