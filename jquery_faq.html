@@ -4,6 +4,11 @@
 <head>
     <title>National Park Faqs</title>
 </head>
+<style>
+    .invisible {
+        visibility: hidden;
+    }
+</style>
 
 <body>
     <p>Here are 10 facts about national parks that I hope you like!</p>
@@ -41,13 +46,10 @@
     </dl>
     <script src="js/jquery-3.6.3.js"></script>
     <script>
-        $('.invisible').css('visibility', 'hidden');
-
         $('dt').click(function () {
             $('dd').toggleClass('invisible');
-
         });
-
+        //$('.invisible').css('visibility', 'hidden'); // I couldn't get this to work...QUESTION: can you not assign css to a class and also toggle that class within script????
     </script>
 </body>
 
