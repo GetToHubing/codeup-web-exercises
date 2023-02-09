@@ -11,45 +11,109 @@
 </style>
 
 <body>
-    <p>Here are 10 facts about national parks that I hope you like!</p>
-    <dl>
-        <dt>Yellowstone National Park</dt>
-        <dd class="invisible">Is the oldest U.S. national park, founded in 1872.</dd>
+    <div>
+        <p>Here are 10 facts about national parks that I hope you like!</p>
+        <dl>
+            <dt>Yellowstone National Park</dt>
+            <dd class="invisible">Is the oldest U.S. national park, founded in 1872.</dd>
 
-        <dt>Yosemite National Park</dt>
-        <dd class="invisible">Out the ten highest waterfalls in the world Yosemite national park is home to 3 out of the
-            ten waterfalls.</dd>
+            <dt>Yosemite National Park</dt>
+            <dd class="invisible">Out the ten highest waterfalls in the world Yosemite national park is home to 3 out of
+                the
+                ten waterfalls.</dd>
 
-        <dt>Sequoia National Park</dt>
-        <dd class="invisible">Is home to the largest living single-stem tree in the world.</dd>
+            <dt>Sequoia National Park</dt>
+            <dd class="invisible">Is home to the largest living single-stem tree in the world.</dd>
 
-        <dt>Wrangell-St. Elias National Park</dt>
-        <dd class="invisible">Is the Largest national park covering 13,000 square miles or 13.2 million acres.</dd>
+            <dt>Wrangell-St. Elias National Park</dt>
+            <dd class="invisible">Is the Largest national park covering 13,000 square miles or 13.2 million acres.</dd>
 
-        <dt>Mammoth Cave National Park</dt>
-        <dd class="invisible">Has the longest cave system in the world with more than 3,454 mapped miles.</dd>
+            <dt>Mammoth Cave National Park</dt>
+            <dd class="invisible">Has the longest cave system in the world with more than 3,454 mapped miles.</dd>
 
-        <dt>Carlsbad Caverns National Park</dt>
-        <dd class="invisible">Has the nations deepest cave which is 1,593ft deep.</dd>
+            <dt>Carlsbad Caverns National Park</dt>
+            <dd class="invisible">Has the nations deepest cave which is 1,593ft deep.</dd>
 
-        <dt>Dry Tortugas National Park</dt>
-        <dd class="invisible">Is a collection of seven tiny islands that can only be reached by boat or plane.</dd>
+            <dt>Dry Tortugas National Park</dt>
+            <dd class="invisible">Is a collection of seven tiny islands that can only be reached by boat or plane.</dd>
 
-        <dt>Hawaii Volcanoes National Park</dt>
-        <dd class="invisible">Is home to the worlds biggest volcano.</dd>
+            <dt>Hawaii Volcanoes National Park</dt>
+            <dd class="invisible">Is home to the worlds biggest volcano.</dd>
 
-        <dt>Crater Lake National Park</dt>
-        <dd class="invisible">Has the deepest lake at 1,932 feet deep.</dd>
+            <dt>Crater Lake National Park</dt>
+            <dd class="invisible">Has the deepest lake at 1,932 feet deep.</dd>
 
-        <dt>Olympic National Park</dt>
-        <dd class="invisible">Has had one human death by animal and it wasn't by aa bear but by a goat.</dd>
-    </dl>
+            <dt>Olympic National Park</dt>
+            <dd class="invisible">Has had one human death by animal and it wasn't by aa bear but by a goat.</dd>
+        </dl>
+    </div>
+    <div>
+        <h3 class="firsth3">Yellowstone National Park</h3>
+        <ul class="ul1">
+            <li>Yellowstone encompasses 2,221,766 acres.</li>
+            <li>There are more than 10,000 hydrothermal features in Yellowstone.</li>
+            <li>Yellowstone is home to more than 500 active geysers.</li>
+            <li>There are approximately 1,000 miles of hiking trails in Yellowstone.</li>
+        </ul>
+        <h3 class="secondh3">Mammoth Cave National Park</h3>
+        <ul class="ul2">
+            <li>Has the longest cave system in the world with more than 400 miles officially mapped.</li>
+            <li>Officially recognized as one of the largest tourist attractions in the U.S.</li>
+            <li>The cave system is home to more than 12 unusual species, such as the rare Albino Shrimp, Kentucky
+                Eyeless Cave Shrimp, Southern Cave Fish, and Indiana Eyeless Crayfish.</li>
+            <li>Mammoth Cave is listed as one of the natural wonders</li>
+        </ul>
+        <h3 class="thirdh3 test">Wrangell-St. Elias National Park</h3>
+        <ul class="ul3">
+            <li>St. Elias is home to some of the largest volcanoes in the United States and Canada.</li>
+            <li>Malaspina Glacier is the largest piedmont glacier in the world, with a surface area of over 1,500 square
+                miles.</li>
+            <li>The park is home to the largest single wilderness area in the nation.</li>
+            <li>Mt. St. Elias, at 18,008 feet (5.5km), is the second highest peak in the United States.</li>
+        </ul>
+        <button class="btn1" type="button">button</button>
+    </div>
     <script src="js/jquery-3.6.3.js"></script>
+    
+    <!-- <script>$('.invisible').css('visibility', 'hidden'); // I couldn't get this to work...QUESTION: can you not assign css to a class and also toggle that class within script????
+    </script> -->
+
     <script>
         $('dt').click(function () {
             $('dd').toggleClass('invisible');
         });
-        //$('.invisible').css('visibility', 'hidden'); // I couldn't get this to work...QUESTION: can you not assign css to a class and also toggle that class within script????
+        
+        // $('.btn1').click(function () {
+        //     $('ul li:last-child').css('background-color', 'yellow'); // this works it just wasn't what the exercise was asking for...i think
+        // });
+        $('.btn1').click(function () {
+            $('ul').children('li:last-child').css('background-color', 'yellow');
+        });
+        $('.firsth3').click(function () {
+            $(this).next().css('font-weight', 'bold');
+        });
+        $('.secondh3').click(function () {
+            $(this).next().css('font-weight', 'bold');
+        });
+        $('.thirdh3').click(function () {
+            $(this).next().css('font-weight', 'bold');
+        });
+        // $('.ul3 li').click(function () {
+        //     $('.ul3 li:first-child').css('color', 'blue'); // same as for my first button above
+        // });
+        $('.ul1').children().click(function () {
+            $('.ul1').children('li:first-child').css('color', 'blue');
+        });
+        $('.ul2').children().click(function () {
+            $('.ul2').children('li:first-child').css('color', 'blue');
+        });
+        // $('.ul3').children().click(function () {
+        //     $('.ul3').children('li:first-child').css('color', 'blue');
+        // });
+        $('.test').next().children().click(function () {
+            $('.test').next().children('li:first-child').css('color', 'blue'); //holy molly it works...just wanted to test this out
+        });
+
     </script>
 </body>
 
