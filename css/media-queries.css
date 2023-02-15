@@ -1,0 +1,81 @@
+/* Small devices (phones and pocket devices, 576 and up) */
+@media screen and (max-width:576px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .alert-info {
+        background-color: lightblue;
+        border: solid grey 1px;
+        text-align: center;
+        margin: 1em 1em .25em 1em;
+        padding: 1em;
+    }
+    .alert-info a {
+        text-decoration: none;
+        color: black;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: .5em;
+
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: space-around;
+        list-style: none;
+
+    }
+    .nav-links li {
+        background-color: lightgrey;
+        margin: .5em 1em;
+        padding: .75em;
+    }
+    li a {
+        color: blue;
+
+    }
+    .header-img {
+        margin: 1em;
+    }
+    img{
+        width: 100%;
+    }
+    .main {
+        margin: 1em 1em 1.5em 1em;
+    }
+    .main h2 {
+        margin-bottom: .5em;
+    }
+    .sub-section {
+        margin: 1em 1em 3em 1em;
+    }
+    .sub-section h2 {
+        margin-bottom: .5em;
+        font-style: italic;
+        font-size: large;
+    }
+    footer {
+        margin: 1em;
+        display: flex;
+
+    }
+    footer p {
+        font-size: small;
+        flex-grow: 1;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) { /* ... */ }
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) { /* ... */ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) { /* ... */ }
