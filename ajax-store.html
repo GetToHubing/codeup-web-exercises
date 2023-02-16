@@ -24,9 +24,14 @@
 <div class="d-flex justify-content-center">
     <button class="btn btn-secondary" id="refresh-btn" type="button">Refresh</button>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="js/jquery-3.6.3.js"></script>
+<!--trying to get the isEqual to work-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+
 
 <script>
     (function () {
@@ -39,16 +44,8 @@
         //       HINT: You will want to target #insertProducts for your new HTML elements
 
 
-        // $.ajax("data/inventory.json").done(function(data) {
-        //     console.log(data);
-        //     var $tr = $('<tr>').append(
-        //         $('<td>').text(data.title),
-        //         $('<td>').text(data.quantity),
-        //         $('<td>').text(data.categories),
-        //         $('<td>').text(data.price)).appendTo('#insertProducts');
-        // }, "json");
+        $.ajax("data/inventory.json").done(function (data, status, jqXhr) {
 
-        $.ajax("data/inventory.json").done(function (data) {
             data.forEach(x => {
                 $('<tr>').append(
                     $('<td>').text(x.title),
@@ -59,22 +56,29 @@
             })
         }, "json");
 
+        let x = $.ajax("data/inventory.json").done(function (data) {
+            return JSON.stringify(data);
+        }, "json");
+        console.log(x);
+
+
 
         $('#refresh-btn').click(function () {
-
-
             $.ajax("data/inventory.json").done(function (data) {
-                        data.forEach(x => {
-                            $('<tr>').append(
-                                $('<td>').text(x.title),
-                                $('<td>').text(x.quantity),
-                                $('<td>').text(x.price),
-                                $('<td>').text(x.categories)
-                            ).appendTo('#insertProducts');
-                        })
-                    
-                }, "json");
+                console.log(JSON.stringify(data));
+                if (_.isEqual(x, data) === true) {
+                    alert("There was nothing to update.")
 
+                    // data.forEach(x => {
+                    //     $('<tr>').append(
+                    //         $('<td>').text(x.title),
+                    //         $('<td>').text(x.quantity),
+                    //         $('<td>').text(x.price),
+                    //         $('<td>').text(x.categories)
+                    //     ).appendTo('#insertProducts');
+                    // })
+                }
+            }, "json");
         })
     })();
 </script>
