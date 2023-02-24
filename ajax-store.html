@@ -43,9 +43,8 @@
         //             its contents and fields
         //       HINT: You will want to target #insertProducts for your new HTML elements
 
-
+// initial loading of the data after the page has loaded -----------------------------------
         $.ajax("data/inventory.json").done(function (data, status, jqXhr) {
-
             data.forEach(x => {
                 $('<tr>').append(
                     $('<td>').text(x.title),
@@ -56,31 +55,75 @@
             })
         }, "json");
 
-        let x = $.ajax("data/inventory.json").done(function (data) {
-            return JSON.stringify(data);
-        }, "json");
-        console.log(x);
 
-
-
-        $('#refresh-btn').click(function () {
-            $.ajax("data/inventory.json").done(function (data) {
-                console.log(JSON.stringify(data));
-                if (_.isEqual(x, data) === true) {
-                    alert("There was nothing to update.")
-
-                    // data.forEach(x => {
-                    //     $('<tr>').append(
-                    //         $('<td>').text(x.title),
-                    //         $('<td>').text(x.quantity),
-                    //         $('<td>').text(x.price),
-                    //         $('<td>').text(x.categories)
-                    //     ).appendTo('#insertProducts');
-                    // })
+// I wanted the json data as a variable to manipulate later  -------------------------------------
+        var jsonData = (function () {
+            var json = null;
+            $.ajax({
+                'async': false,
+                'global': false,
+                'url': "data/inventory.json",
+                'dataType': "json",
+                'success': function (data) {
+                    json = data;
                 }
-            }, "json");
+            });
+            return json;
+        })();
+        console.log(JSON.stringify(jsonData));
+
+        // testing out
+        // jsonData.forEach(x => {
+        //     $('<tr>').append(
+        //         $('<td>').text(x.title),
+        //         $('<td>').text(x.quantity),
+        //         $('<td>').text(x.price),
+        //         $('<td>').text(x.categories)
+        //     ).appendTo('#insertProducts');
+        // });
+//loading the 'updated' data to the table by button click
+        $('#refresh-btn').click(function () {
+            $.ajax({
+                'async': false,
+                'global': false,
+                'url': "data/inventory.json",
+                'dataType': "json",
+                'success': function (data) {
+                    if(JSON.stringify(jsonData) !== JSON.stringify(data)) {
+                        jsonData = data;
+                        data.forEach(x => {
+                            $('<tr>').append(
+                                $('<td>').text(x.title),
+                                $('<td>').text(x.quantity),
+                                $('<td>').text(x.price),
+                                $('<td>').text(x.categories)
+                            ).appendTo('#insertProducts');
+                        })
+                    } else {
+                        alert('Table is up to date');
+                    }
+                }
+            });
         })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     })();
+
+
 </script>
 
 </body>
