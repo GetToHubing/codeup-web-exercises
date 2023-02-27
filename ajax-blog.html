@@ -18,7 +18,7 @@
         </div>
         <div class="card-footer d-flex " id=>
             <div class="me-auto ">
-catagories
+categories
             </div>
             <div class="me-0">
 date
@@ -48,12 +48,9 @@ date
         console.log(jsonData);
 
         jsonData.reverse().forEach(data => { //.reverse so the most recent post is loaded in first....relies on the post being in chronological order in the array
-            let string = '<section class="container w-50"><div class="card text-center"><div class="card-header"><h5 class="card-title" id="">' + data.title + '</h5></div><div class="card-body" id=""><p class="card-text">' + data.content + '</p></div><div class="card-footer d-flex" id=""><div class="me-auto ">' + data.categories.join(' ') + '</div><div class="me-0">' + data.date + '</div></div></div></section>';
+            let string = '<section class="container w-50 my-3"><div class="card text-center"><div class="card-header"><h5 class="card-title" id="">' + data.title + '</h5></div><div class="card-body" id=""><p class="card-text">' + data.content + '</p></div><div class="card-footer d-flex" id=""><div class="me-auto ">' + data.categories.join(', ') + '</div><div class="me-0">' + data.date + '</div></div></div></section>';
             $(string).appendTo('#test');
         })
-        // let string = '<section class="container w-50"><div class="card text-center"><div class="card-header"><h5 class="card-title" id="">' + jsonData[0].title + '</h5></div><div class="card-body" id=""><p class="card-text">With supporting text below as a natural lead-in to additional content.</p></div><div class="card-footer text-muted" id="">2 days ago</div></div></section>';
-        // // $('#test').append(string);
-        // $(string).appendTo('#test');
 
 
     })();
