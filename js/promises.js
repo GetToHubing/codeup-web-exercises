@@ -26,11 +26,22 @@
 //     .then(response => console.log(response.json()))
 //     .catch(error => console.error(error));
 
-let x;
+
+// fetch('https://api.github.com/users')
+//     .then(response => console.log(response.json()));
+
+
 fetch('https://api.github.com/search/commits?q=author:gettohubing+sort:commiter-date-desc&per_page=100')
     .then(response => response.json())
     .then(data => console.log(data.items[data.items.length-1].commit.committer.date))
     .catch(error => console.error(error));
 
-// fetch('https://api.github.com/users')
-//     .then(response => console.log(response.json()));
+
+function wait(x) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(alert('You will see this after ' + x + ' seconds.'));
+            reject('hopefully you wont see this');
+        }, x);
+    });
+}

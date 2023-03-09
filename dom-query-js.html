@@ -30,6 +30,8 @@
     <button id="btn2">Change the sub-header color</button><br>
     <button id="btn3">Change the color of every other list item</button><br>
     <button id="btn4">Replace the paragraph</button><br>
+    <button id="btn5">Change font color of li 1</button><br>
+
 
     <script>
         (function () {
@@ -71,7 +73,11 @@
             btn3.addEventListener('click', listener3);
 
             // TODO: Set text color of li with dbid = 1 to blue
-            listItems[0].style.color = 'blue';
+            let listener5 = function (event) {
+                listItems[0].style.color = 'blue';
+            }
+            let btn5 = document.getElementById('btn5');
+            btn5.addEventListener('click', listener5);
 
             // TODO: Uncomment the next line and get all elements with class name sub-paragraph
             var subParagraphs = document.querySelector('.sub-paragraph'); //querySelector works, make sure to include (.) or (#) for id's 
