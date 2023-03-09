@@ -3,26 +3,30 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <script src="js/mapbox-geocoder-utils.js"></script>
     <title>Mapbox</title>
 </head>
 <body>
-<div id='map' style='width: 700px; height: 600px;'></div>
+<div class="container mt-5" id='map' style='width: 700px; height: 600px;'></div>
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZG5iYW5rZSIsImEiOiJjbGYxOHljcXEwNjNkM3NsNDQyMXlkMGVkIn0.oC8I_psSo_g_BsCRHrAS2w';
+
+    let token = 'pk.eyJ1IjoiZG5iYW5rZSIsImEiOiJjbGYxOHljcXEwNjNkM3NsNDQyMXlkMGVkIn0.oC8I_psSo_g_BsCRHrAS2w';
+    mapboxgl.accessToken = token;
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [-95.264961, 30.009329], // starting position [lng, lat]
         zoom: 15, // starting zoom
     });
-    var marker = new mapboxgl.Marker()
-        .setLngLat([-95.264961, 30.009329])
-        .addTo(map);
-    var Saltgrass = new mapboxgl.Popup()
-        .setHTML("<p>Saltgrass!</p>");
-    marker.setPopup(Saltgrass);
+    // var marker = new mapboxgl.Marker()
+    //     .setLngLat([-95.264961, 30.009329])
+    //     .addTo(map);
+    // var Saltgrass = new mapboxgl.Popup()
+    //     .setHTML("<p>Saltgrass!</p>");
+    // marker.setPopup(Saltgrass);
 
 
     let newArray = [{
@@ -38,6 +42,18 @@
         longlat: "[-95.24925806224898, 29.93836223751434]",
         address: "4801 Wilson Rd Suite 800, Humble, TX 77396"
     }]
+
+    newArray.forEach((info) => {
+        geocode(info.address, token).then(function(coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(info.name);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            popup.addTo(map);
+        });
+    })
 
 
 </script>
