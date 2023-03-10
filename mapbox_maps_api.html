@@ -3,16 +3,33 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
     <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <title>Mapbox</title>
 </head>
 <body>
 <div class="container mt-5" id='map' style='width: 700px; height: 600px;'></div>
-<script>
+<section class="container mt-2 w-25">
+    <div class="input-group">
+        <input class="btn btn-secondary" id="userAddressBtn" type="submit"/>
+        <input class="form-control" placeholder="Search Address" type="text" id="userAddress" name="search"/>
+    </div>
+    <select class="form-select " aria-label="Default select example" id="zoomLevel">
+        <!--    <option selected>Select a zoom level</option>-->
+        <option value="5">5</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+    <div>
+        <button type="button" class="btn btn-primary" id="marker-toggle-btn">remove markers</button>
+    </div>
+</section>
 
+<script>
     let token = 'pk.eyJ1IjoiZG5iYW5rZSIsImEiOiJjbGYxOHljcXEwNjNkM3NsNDQyMXlkMGVkIn0.oC8I_psSo_g_BsCRHrAS2w';
     mapboxgl.accessToken = token;
     const map = new mapboxgl.Map({
@@ -27,7 +44,6 @@
     // var Saltgrass = new mapboxgl.Popup()
     //     .setHTML("<p>Saltgrass!</p>");
     // marker.setPopup(Saltgrass);
-
 
     let newArray = [{
         name: "<p>Saltgrass</p>",
@@ -44,18 +60,52 @@
     }]
 
     newArray.forEach((info) => {
-        geocode(info.address, token).then(function(coordinates) {
+        geocode(info.address, token).then(function (coordinates) {
             var popup = new mapboxgl.Popup()
                 .setHTML(info.name);
             var marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
                 .setPopup(popup);
-            popup.addTo(map);
+            // popup.addTo(map); //shows automatically...no need to click on marker
         });
     })
 
+    //used to retrieve user zoom lvl from select and and set map zoom
+    let zoomLevel = document.getElementById('zoomLevel');
+    zoomLevel.addEventListener('change', setZoom);
+    function setZoom() {
+        map.setZoom(zoomLevel.value)
+    }
 
+    //used for the users input address
+    let userAddress = document.getElementById('userAddress');
+    let addressBtn = document.getElementById('userAddressBtn');
+    addressBtn.addEventListener('click', usersNewAddress);
+    function usersNewAddress() {
+        geocode(userAddress.value, token).then(function (coordinates) {
+            console.log(coordinates);
+            var popup = new mapboxgl.Popup()
+                .setHTML(userAddress.value);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            map.flyTo({
+                center: coordinates,
+                zoom: 13
+            })
+        });
+    }
+
+
+
+    let markers = document.querySelectorAll(".mapboxgl-marker");
+
+
+    $("#marker-toggle-btn").click(function(){
+        $(".mapboxgl-marker").toggle();
+    });
 </script>
 </body>
 </html>
