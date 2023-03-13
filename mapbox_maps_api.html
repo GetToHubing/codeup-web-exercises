@@ -32,6 +32,7 @@
 <script>
     let token = 'pk.eyJ1IjoiZG5iYW5rZSIsImEiOiJjbGYxOHljcXEwNjNkM3NsNDQyMXlkMGVkIn0.oC8I_psSo_g_BsCRHrAS2w';
     mapboxgl.accessToken = token;
+    //add the initial map to the webpage
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -59,6 +60,7 @@
         address: "4801 Wilson Rd Suite 800, Humble, TX 77396"
     }]
 
+ //adds a marker and popup for every array object
     newArray.forEach((info) => {
         geocode(info.address, token).then(function (coordinates) {
             var popup = new mapboxgl.Popup()
@@ -98,14 +100,11 @@
         });
     }
 
-
-
-    let markers = document.querySelectorAll(".mapboxgl-marker");
-
-
+    //toggles markers visibility on btn click
     $("#marker-toggle-btn").click(function(){
         $(".mapboxgl-marker").toggle();
     });
+
 </script>
 </body>
 </html>
