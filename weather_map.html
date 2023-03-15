@@ -19,26 +19,27 @@
     <h4 class="my-auto d-flex" id="headerId">Weather App</h4>
     <p class="my-auto ms-auto" id="location">Current Address: You have not selected an address yet</p>
 </header>
+<!--the below paragraph shows up only on smaller screens (425px max)-->
 <p class="my-auto me-2 bg-primary text-white text-center w-100" id="locationV2">Current Address: You have not selected an address yet</p>
 
 <main>
     <section class="">
-        <form class="row  my-4 mx-5 d-flex">
-            <div class="col-auto d-flex align-items-center">
-                <label for="userLocation" class="me-2">Location</label>
-                <input type="text" class="form-control" id="userLocation" placeholder="Address">
-                <button type="button" id="userInputBtn" class="btn btn-primary ms-2">Find</button>
-            </div>
-        </form>
-<!--        <div class="input-group mb-3">-->
-<!--            <input type="text" class="form-control" placeholder="Search for Address" aria-label="search address" aria-describedby="button-addon2">-->
-<!--            <button class="btn btn-primary" type="button" id="button-addon2">Find</button>-->
-<!--        </div>-->
+<!--        <form class="row my-4 mx-5 d-flex">-->
+<!--            <div class="col-auto d-flex align-items-center">-->
+<!--                <label for="userLocation" class="me-2">Location</label>-->
+<!--                <input type="text" class="form-control" id="userLocation" placeholder="Address">-->
+<!--                <button type="button" id="userInputBtn" class="btn btn-primary ms-2">Find</button>-->
+<!--            </div>-->
+<!--        </form>-->
+        <div class="input-group my-3 container-fluid" id="inputBtn">
+            <input type="text" class="form-control" placeholder="Search for Location or Address" aria-label="search address" aria-describedby="button-addon2" id="userLocation">
+            <button class="btn btn-primary" type="button" id="userInputBtn">Find</button>
+        </div>
     </section>
-    <section class="d-flex flex-wrap justify-content-around mt-3 container-fluid" id="cards">
+    <section class="d-flex flex-wrap justify-content-around mt-3" id="cards">
 <!--this is where the cards are loaded-->
     </section>
-    <section id="map" class=" mt-4">
+    <section id="map" class=" mt-3">
 <!--this is where the map is loaded-->
     </section>
 </main>

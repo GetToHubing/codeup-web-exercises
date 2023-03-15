@@ -20,4 +20,7 @@
     #locationV2 {
         display: none;
     }
+    #inputBtn {
+        width: 50%;
+    }
 }

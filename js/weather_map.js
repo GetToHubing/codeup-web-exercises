@@ -123,7 +123,6 @@ function onDragEnd() {
             $('#location').text("Current Address: " + results);
             $('#locationV2').text("Current Address: " + results);
         });
-
 }
 
 //specifies what happens when the map is double-clicked
