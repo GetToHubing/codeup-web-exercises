@@ -11,7 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/weather_map.css">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="img/weather_map_favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/weather_map_favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/weather_map_favicons/favicon-16x16.png">
+    <link rel="manifest" href="img/weather_map_favicons/site.webmanifest">
     <title>Weather Map</title>
 </head>
 <body>
@@ -31,10 +34,12 @@
 <!--                <button type="button" id="userInputBtn" class="btn btn-primary ms-2">Find</button>-->
 <!--            </div>-->
 <!--        </form>-->
+<!--        <span class="tt" data-bs-placement="bottom" title="Please type in an address or click a location on the map to get started">-->
         <div class="input-group my-3 container-fluid" id="inputBtn">
-            <input type="text" class="form-control" placeholder="Search for Location or Address" aria-label="search address" aria-describedby="button-addon2" id="userLocation">
+            <input type="text" class="form-control tt" placeholder="Search for Location or Address" aria-label="search address" aria-describedby="button-addon2" id="userLocation" data-bs-placement="top" title="Please type in an address or click a location on the map to get started">
             <button class="btn btn-primary" type="button" id="userInputBtn">Find</button>
         </div>
+<!--        </span>-->
     </section>
     <section class="d-flex flex-wrap justify-content-around mt-3" id="cards">
 <!--this is where the cards are loaded-->

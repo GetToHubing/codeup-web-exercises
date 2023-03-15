@@ -13,8 +13,8 @@ function newAddress() {
 <p class="card-title text-center">L: ${parseInt(data.main.temp_min)}&deg; - H: ${parseInt(data.main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.weather[0].description}</p>
-<hr><p class="card-text">Humidity: ${data.main.humidity}</p>
-<hr><p class="card-text">Wind: ${data.wind.speed}</p>
+<hr><p class="card-text">Humidity: ${data.main.humidity}%</p>
+<hr><p class="card-text">Wind: ${data.wind.speed}Mph</p>
 <hr><p class="card-text">Pressure: ${data.main.pressure}</p>
 </div></div>`
                 $(string).appendTo('#cards');
@@ -30,8 +30,8 @@ function newAddress() {
 <p class="card-title text-center">L: ${parseInt(data.list[i].main.temp_min)}&deg; - H: ${parseInt(data.list[i].main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.list[i].weather[0].description}</p>
-<hr><p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
-<hr><p class="card-text">Wind: ${data.list[i].wind.speed}</p>
+<hr><p class="card-text">Humidity: ${data.list[i].main.humidity}%</p>
+<hr><p class="card-text">Wind: ${data.list[i].wind.speed}Mph</p>
 <hr><p class="card-text">Pressure: ${data.list[i].main.pressure}</p>
 </div></div>`
                     $(string).appendTo('#cards');
@@ -91,8 +91,8 @@ function onDragEnd() {
 <p class="card-title text-center">L: ${parseInt(data.main.temp_min)}&deg; / H: ${parseInt(data.main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.weather[0].description}</p>
-<hr><p class="card-text">Humidity: ${data.main.humidity}</p>
-<hr><p class="card-text">Wind: ${data.wind.speed}</p>
+<hr><p class="card-text">Humidity: ${data.main.humidity}%</p>
+<hr><p class="card-text">Wind: ${data.wind.speed}Mph</p>
 <hr><p class="card-text">Pressure: ${data.main.pressure}</p>
 </div></div>`
             $(string).appendTo('#cards');
@@ -108,8 +108,8 @@ function onDragEnd() {
 <p class="card-title text-center">L: ${parseInt(data.list[i].main.temp_min)}&deg; / H: ${parseInt(data.list[i].main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.list[i].weather[0].description}</p>
-<hr><p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
-<hr><p class="card-text">Wind: ${data.list[i].wind.speed}</p>
+<hr><p class="card-text">Humidity: ${data.list[i].main.humidity}%</p>
+<hr><p class="card-text">Wind: ${data.list[i].wind.speed}Mph</p>
 <hr><p class="card-text">Pressure: ${data.list[i].main.pressure}</p>
 </div></div>`
                 $(string).appendTo('#cards');
@@ -138,4 +138,10 @@ map.on('click', (e) => {
     onDragEnd();
     marker.on('dragend', onDragEnd);
 
+});
+
+//finds all classes with the class tt and adds a new bootstrap.tooltip
+const tooltips = document.querySelectorAll('.tt');
+tooltips.forEach(x => {
+    new bootstrap.Tooltip(x);
 });
