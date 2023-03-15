@@ -10,7 +10,7 @@ function newAddress() {
                 let string = `<div class="card mb-3">
 <div class="card-header text-center">Todays Weather Forecast</div>
 <div class="card-body">
-<p class="card-title text-center">L:${data.main.temp_min}&deg; / H:${data.main.temp_max}&deg;<br>
+<p class="card-title text-center">L: ${parseInt(data.main.temp_min)}&deg; - H: ${parseInt(data.main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.weather[0].description}</p>
 <hr><p class="card-text">Humidity: ${data.main.humidity}</p>
@@ -27,7 +27,7 @@ function newAddress() {
                     let string = `<div class="card mb-3">
 <div class="card-header text-center">${date[0]}</div>
 <div class="card-body">
-<p class="card-title text-center">L:${data.list[i].main.temp_min}&deg; / H:${data.list[i].main.temp_max}&deg;<br>
+<p class="card-title text-center">L: ${parseInt(data.list[i].main.temp_min)}&deg; - H: ${parseInt(data.list[i].main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.list[i].weather[0].description}</p>
 <hr><p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
@@ -88,7 +88,7 @@ function onDragEnd() {
             let string = `<div class="card mb-3">
 <div class="card-header text-center">Todays Weather Forcast</div>
 <div class="card-body">
-<p class="card-title text-center">L:${data.main.temp_min}&deg; / H:${data.main.temp_max}&deg;<br>
+<p class="card-title text-center">L: ${parseInt(data.main.temp_min)}&deg; / H: ${parseInt(data.main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.weather[0].description}</p>
 <hr><p class="card-text">Humidity: ${data.main.humidity}</p>
@@ -105,7 +105,7 @@ function onDragEnd() {
                 let string = `<div class="card mb-3">
 <div class="card-header text-center">${date[0]}</div>
 <div class="card-body">
-<p class="card-title text-center">L:${data.list[i].main.temp_min}&deg; / H:${data.list[i].main.temp_max}&deg;<br>
+<p class="card-title text-center">L: ${parseInt(data.list[i].main.temp_min)}&deg; / H: ${parseInt(data.list[i].main.temp_max)}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"/></p>
 <hr><p class="card-text">Description: ${data.list[i].weather[0].description}</p>
 <hr><p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
@@ -122,12 +122,12 @@ function onDragEnd() {
             console.log(results);
             $('#location').text("Current Address: " + results);
             $('#locationV2').text("Current Address: " + results);
-
         });
+
 }
 
 //specifies what happens when the map is double-clicked
-map.on('dblclick', (e) => {
+map.on('click', (e) => {
     console.log(e.lngLat);
     $(".mapboxgl-marker").remove();
     var marker = new mapboxgl.Marker({
@@ -137,4 +137,6 @@ map.on('dblclick', (e) => {
         .addTo(map)
     usedMarker = marker;
     onDragEnd();
+    marker.on('dragend', onDragEnd);
+
 });
