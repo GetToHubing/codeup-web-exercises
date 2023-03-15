@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
     <script src="js/mapbox-geocoder-utils.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/weather_map.css">
+
     <title>Weather Map</title>
 </head>
 <body>
 <header class="bg-primary p-1 d-flex justify-content-between text-white">
     <h4 class="my-auto ms-2">Weather App</h4>
-    <p class="my-auto me-2" id="location">standin</p>
+    <p class="my-auto me-2" id="location">Current Address: You have not selected an address yet</p>
 </header>
 <main>
     <section>
@@ -27,96 +31,19 @@
             </div>
         </form>
     </section>
-    <section class=" d-flex flex-wrap justify-content-around" id="cards">
-        <!--        <div class="card text-center">-->
-        <!--            <div class="card-header">-->
-        <!--                date-->
-        <!--            </div>-->
-        <!--            <div class="card-body">-->
-        <!--                <p class="card-title">Special title treatment</p>-->
-        <!--                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-        <!--                <hr>-->
-        <!--                <p class="card-text"></p>-->
-        <!--                <hr>-->
-        <!--                <p class="card-text"></p>-->
-        <!--                <hr>-->
-        <!--                <p class="card-text"></p>-->
-        <!--            </div>-->
-        <!--        </div>-->
+    <section class="d-flex flex-wrap justify-content-around my-3" id="cards2">
+<!--this is where the daily card will load-->
     </section>
-    <section id="map" class=" mt-5" style='width: 100%; height: 600px;'>
+    <section id="map" class=" mt-4">
+<!--this is where the map is loaded-->
+    </section>
+    <section class="d-flex flex-wrap justify-content-around mt-3" id="cards">
+<!--this is where the cards are loaded-->
     </section>
 </main>
 
-
 <script src="js/keys.js"></script>
-<!--<script src="js/weather_map.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-
-
-<script>
-    function newAddress() {
-        $("#cards").empty(); // removes all the child elements of the html element with the id of cards
-        $(".mapboxgl-marker").remove(); //removes the element and children of the selector, in this case the element with the class of mapboxgl-marker which is associated with the maps markers
-        geocode(userAddress.value, mapBoxKey).then(function (results) {
-            $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`)
-                .done(function (data) {
-                    let i = 0;
-                    while (i < 40) {
-                        let string = `<div class="card mb-3"><div class="card-header text-center">${data.list[i].dt_txt}</div><div class="card-body"><p class="card-title text-center">${data.list[i].main.temp_min}&deg;/${data.list[i].main.temp_max}&deg;</p><hr><p class="card-text">Description: ${data.list[i].weather[0].description}</p><hr><p class="card-text">Humidity: ${data.list[i].main.humidity}</p><hr><p class="card-text">Wind: ${data.list[i].wind.speed}</p><hr><p class="card-text">Pressure: ${data.list[i].main.pressure}</p></div></div>`
-                        $(string).appendTo('#cards');
-                        i += 8;
-                    }
-                    console.log(data);
-                });
-            var popup = new mapboxgl.Popup()
-                .setHTML(userAddress.value);
-            var marker = new mapboxgl.Marker({
-                draggable: true
-            })
-                .setLngLat(results)
-                .addTo(map)
-                .setPopup(popup);
-            map.flyTo({
-                center: results,
-                zoom: 13
-            })
-        });
-    }
-
-    // loading in the initial map
-    mapboxgl.accessToken = mapBoxKey;
-    //add the initial map to the webpage
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [-95.264961, 30.009329], // starting position [lng, lat]
-        zoom: 15, // starting zoom
-    });
-
-    let userAddress = document.getElementById('userLocation');
-    let addressBtn = document.getElementById('userInputBtn');
-    addressBtn.addEventListener('click', newAddress);
-
-
-    // const marker = new mapboxgl.Marker({
-    //     draggable: true
-    // })
-    //     .setLngLat([0, 0])
-    //     .addTo(map);
-    //
-    // function onDragEnd() {
-    //     const lngLat = marker.getLngLat();
-    //     coordinates.style.display = 'block';
-    //     coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
-    // }
-    //
-    // marker.on('dragend', onDragEnd);
-
-</script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="js/weather_map.js"></script>
 </body>
 </html>
