@@ -1,14 +1,5 @@
 let usedMarker;
 
-// $.get("http://api.openweathermap.org/data/2.5/weather", {
-//     APPID: OPEN_WEATHER_APPID,
-//     lat:    29.423017,
-//     lon:   -98.48527,
-//     units: "imperial"
-// }).done(function(data) {
-//     console.log('current weather', data);
-// });
-
 function newAddress() {
     $("#cards").empty(); // removes all the child elements of the html element with the id of cards
     $(".mapboxgl-marker").remove(); //removes the element and children of the selector, in this case the element with the class of mapboxgl-marker which is associated with the maps markers
@@ -17,7 +8,7 @@ function newAddress() {
             .done(function (data) {
                 console.log('current weather', data);
                 let string = `<div class="card mb-3">
-<div class="card-header text-center">Todays Weather Forcast</div>
+<div class="card-header text-center">Todays Weather Forecast</div>
 <div class="card-body">
 <p class="card-title text-center">L:${data.main.temp_min}&deg; / H:${data.main.temp_max}&deg;<br>
 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/></p>
@@ -66,6 +57,8 @@ function newAddress() {
             .then(function (results) {
                 console.log(results);
                 $('#location').text("Current Address: " + results);
+                $('#locationV2').text("Current Address: " + results);
+
             });
     });
 
@@ -76,7 +69,7 @@ mapboxgl.accessToken = mapBoxKey;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    center: [-95.264961, 30.009329], // starting position [lng, lat]
+    center: [-95.2297, 30.1024], // starting position [lng, lat]
     zoom: 10, // starting zoom
 });
 
@@ -89,8 +82,6 @@ function onDragEnd() {
     const lngLat = usedMarker.getLngLat();
     console.log(lngLat);
     $("#cards").empty();
-    $("#cards2").empty();
-
     $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lngLat.lat}&lon=${lngLat.lng}&appid=${openWeatherKey}&units=imperial`)
         .done(function (data) {
             console.log('current weather', data);
@@ -130,6 +121,8 @@ function onDragEnd() {
         .then(function (results) {
             console.log(results);
             $('#location').text("Current Address: " + results);
+            $('#locationV2').text("Current Address: " + results);
+
         });
 }
 
