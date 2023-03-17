@@ -45,7 +45,6 @@ function newAddress() {
             .setLngLat(results)
             .addTo(map)
         marker.on('dragend', onDragEnd);
-
         map.flyTo({
             center: results,
             zoom: 10
@@ -58,10 +57,8 @@ function newAddress() {
                 console.log(results);
                 $('#location').text("Current Address: " + results);
                 $('#locationV2').text("Current Address: " + results);
-
             });
     });
-
 }
 
 // loading in the initial map
