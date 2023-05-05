@@ -123,7 +123,7 @@
                 </div>
                 <div class="card-footer text-end">
                     <!-- remember to have the button make the next card pop up....can't figure this out-->
-                    <a class="btn btn-primary " type="button">Next Step ></a>
+                    <a class="btn btn-primary " type="button" id="nextBtn1">Next Step ></a>
                 </div>
             </div>
         </div>
@@ -177,8 +177,8 @@
                 <div class="card-footer text-end">
                     <!-- remember to have the button make the next card pop up -->
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a class="btn btn-primary " type="button">< Previous</a>
-                        <a class="btn btn-primary " type="button">Next ></a>
+                        <a class="btn btn-primary " id="previousBtn1" type="button">< Previous</a>
+                        <a class="btn btn-primary " id="nextBtn2" type="button">Next ></a>
                     </div>
                 </div>
             </div>
@@ -268,7 +268,7 @@
                     <div class="card-footer text-end">
                         <!-- remember to have the button make the correct card pop up -->
                         <div class="btn-group" role="group">
-                            <a class="btn btn-primary " type="button">< Previous</a>
+                            <a class="btn btn-primary " id="previousBtn2" type="button">< Previous</a>
                             <a class="btn btn-primary" type="button">Checkout <i class="bi bi-cart-fill"></i></a>
                         </div>
                     </div>
@@ -285,6 +285,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $("#nextBtn1").click(function(){
+        $("#nav-home-tab").toggleClass("active");
+        $("#nav-home").toggleClass("active show");
+        $("#nav-profile-tab").toggleClass("active");
+        $("#nav-profile").toggleClass("active show");
+    });
+    $("#previousBtn1").click(function() {
+        $("#nav-home-tab").toggleClass("active");
+        $("#nav-home").toggleClass("active show");
+        $("#nav-profile-tab").toggleClass("active");
+        $("#nav-profile").toggleClass("active show");
+    });
+    $("#nextBtn2").click(function(){
+        $("#nav-profile-tab").toggleClass("active");
+        $("#nav-profile").toggleClass("active show");
+        $("#nav-contact-tab").toggleClass("active");
+        $("#nav-contact").toggleClass("active show");
+    });
+    $("#previousBtn2").click(function(){
+        $("#nav-profile-tab").toggleClass("active");
+        $("#nav-profile").toggleClass("active show");
+        $("#nav-contact-tab").toggleClass("active");
+        $("#nav-contact").toggleClass("active show");
+    });
+</script>
 
 </body>
 
